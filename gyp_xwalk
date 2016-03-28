@@ -331,7 +331,8 @@ def main():
     args.append('-Drelease_unwind_tables=0')
     #### Below flags are used for reducing size of Crosswalk Lite. ####
     # Disable ICU by default
-    args.append('-Duse_icu_alternatives_on_android=1')
+    args.append('-Duse_icu_alternatives_on_android=0')
+    #args.append('-Dicu_use_data_file_flag=0')
     # Disable WebRTC by default
     args.append('-Denable_webrtc=0')
     # Disable XSLT by default
@@ -345,17 +346,17 @@ def main():
     # Disable Sync compositor by default
     args.append('-Ddisable_sync_compositor=1')
     # Disable Webaudio by default
-    args.append('-Ddisable_web_audio=0')
-    args.append('-Ddisable_webaudio_hrtf=0')
+    args.append('-Ddisable_web_audio=1')
+    args.append('-Ddisable_webaudio_hrtf=1')
     args.append('-Duse_openmax_dl_fft=0')
     # Enable use_minimum_resources by default
     args.append('-Duse_minimum_resources=1')
     # Disable buildin extension by default.
-    args.append('-Ddisable_builtin_extensions=1')
+    #args.append('-Ddisable_builtin_extensions=1')
     # Disable Devtools by default
     args.append('-Ddisable_devtools=1')
     # Disable Webvideo by default.
-    args.append('-Ddisable_web_video=0')
+    args.append('-Ddisable_web_video=1')
     # Disable Web Speech API by default
     args.append('-Denable_web_speech=0')
     # Enable "Optimize for size, Os" compile option by default
@@ -379,7 +380,21 @@ def main():
     # Disable Plugins by default
     args.append('-Denable_plugins=0')
     # Enable Mediastream by default
-    args.append('-Ddisable_mediastream=0')
+    args.append('-Ddisable_mediastream=1')
+    # Disable NaCL
+    args.append('-Ddisable_nacl=1')
+    # Turn on embedding. Turns off printing, etc.
+    args.append('-Denable_basic_printing=0')
+    args.append('-Denable_print_preview=0')
+    args.append('-Dremoting=0')
+    args.append('-Denable_google_now=0')
+    args.append('-Denable_extensions=0')
+    args.append('-Denable_spellcheck=0')
+    args.append('-Denable_media_router=0')
+    args.append('-Denable_backgrounds=0')
+    args.append('-Denable_task_manager=0')
+    args.append('-Ddisable_ftp_support=1')
+    # toolkit_views defaults to 0
 
   if not use_analyzer:
     print 'Updating projects from gyp files...'
@@ -424,13 +439,13 @@ def main():
     elif arg == '-Ddisable_mediastream=1':
       disable_mediastream = 1
 
-  from modules_gypi_generator import  generate_modules_gypi
-  modules_flags = (disable_accessibility, disable_bluetooth, disable_geo_features,\
-                   disable_indexeddb, disable_mediastream, disable_notifications, disable_plugins,\
-                   disable_speech, disable_webaudio, disable_webcl,\
-                   disable_webdatabase, disable_webmidi)
-
-  generate_modules_gypi(modules_flags)
+#  from modules_gypi_generator import  generate_modules_gypi
+#  modules_flags = (disable_accessibility, disable_bluetooth, disable_geo_features,\
+#                   disable_indexeddb, disable_mediastream, disable_notifications, disable_plugins,\
+#                   disable_speech, disable_webaudio, disable_webcl,\
+#                   disable_webdatabase, disable_webmidi)
+#
+#  generate_modules_gypi(modules_flags)
 
   # Off we go...
   gyp_rc = gyp.main(args)

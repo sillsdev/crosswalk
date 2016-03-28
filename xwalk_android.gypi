@@ -202,6 +202,7 @@
     {
       'target_name': 'xwalk_core_native_jni',
       'type': 'none',
+      'dependencies' : ['xwalk_core_internal_java'],
       'variables': {
         'jni_gen_package': 'xwalk',
       },
