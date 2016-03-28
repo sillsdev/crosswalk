@@ -14,8 +14,10 @@
 #include "components/content_settings/core/common/content_settings.h"
 #include "components/content_settings/core/common/content_settings_types.h"
 #include "content/public/browser/navigation_entry.h"
+#ifndef DISABLE_NOTIFICATIONS
 #include "content/public/browser/notification_details.h"
 #include "content/public/browser/notification_service.h"
+#endif
 #include "content/public/browser/render_frame_host.h"
 #include "content/public/browser/render_process_host.h"
 #include "content/public/browser/render_view_host.h"
@@ -325,10 +327,12 @@ bool Runtime::HandleContextMenu(const content::ContextMenuParams& params) {
   return false;
 }
 
+#ifndef DISABLE_NOTIFICATIONS
 void Runtime::Observe(int type,
                       const content::NotificationSource& source,
                       const content::NotificationDetails& details) {
 }
+#endif
 
 void Runtime::RequestMediaAccessPermission(
     content::WebContents* web_contents,

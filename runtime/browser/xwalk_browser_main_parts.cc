@@ -15,7 +15,9 @@
 #include "base/message_loop/message_loop.h"
 #include "base/strings/string_number_conversions.h"
 #include "cc/base/switches.h"
+#ifndef DISABLE_DEVTOOLS
 #include "components/devtools_http_handler/devtools_http_handler.h"
+#endif
 #include "content/public/browser/browser_thread.h"
 #include "content/public/common/content_switches.h"
 #include "content/public/common/main_function_params.h"
@@ -30,9 +32,11 @@
 #if defined(USE_GTK_UI)
 #include "xwalk/runtime/browser/ui/gtk2_ui.h"
 #endif
+#ifndef DISABLE_DEVTOOLS
 #include "xwalk/runtime/browser/devtools/xwalk_devtools_manager_delegate.h"
 #include "xwalk/runtime/browser/ui/xwalk_javascript_native_dialog_factory.h"
 #include "xwalk/runtime/browser/xwalk_browser_context.h"
+#endif
 #include "xwalk/runtime/browser/xwalk_runner.h"
 #include "xwalk/runtime/common/xwalk_runtime_features.h"
 #include "xwalk/runtime/common/xwalk_switches.h"
@@ -95,8 +99,12 @@ XWalkBrowserMainParts::XWalkBrowserMainParts(
       extension_service_(NULL),
       startup_url_(url::kAboutBlankURL),
       parameters_(parameters),
+#ifndef DISABLE_DEVTOOLS
       run_default_message_loop_(true),
       devtools_http_handler_(nullptr) {
+#else
+      run_default_message_loop_(true) {
+#endif
 #if defined(OS_LINUX)
   // FIXME: We disable the setuid sandbox on Linux because we don't ship
   // the setuid binary. It is important to remember that the seccomp-bpf
@@ -112,7 +120,9 @@ XWalkBrowserMainParts::XWalkBrowserMainParts(
 }
 
 XWalkBrowserMainParts::~XWalkBrowserMainParts() {
+#ifndef DISABLE_DEVTOOLS
   DCHECK(!devtools_http_handler_);
+#endif
 }
 
 void XWalkBrowserMainParts::PreMainMessageLoopStart() {
@@ -189,9 +199,11 @@ void XWalkBrowserMainParts::RegisterExternalExtensions() {
 void XWalkBrowserMainParts::PreMainMessageLoopRun() {
   xwalk_runner_->PreMainMessageLoopRun();
 
+#ifndef DISABLE_DEVTOOLS
   devtools_http_handler_.reset(
       XWalkDevToolsManagerDelegate::CreateHttpHandler(
           xwalk_runner_->browser_context()));
+#endif
 
   extension_service_ = xwalk_runner_->extension_service();
 
@@ -258,7 +270,9 @@ bool XWalkBrowserMainParts::MainMessageLoopRun(int* result_code) {
 
 void XWalkBrowserMainParts::PostMainMessageLoopRun() {
   xwalk_runner_->PostMainMessageLoopRun();
+#ifndef DISABLE_DEVTOOLS
   devtools_http_handler_.reset();
+#endif
 }
 
 void XWalkBrowserMainParts::CreateInternalExtensionsForUIThread(
