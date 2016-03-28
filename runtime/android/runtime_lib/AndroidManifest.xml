@@ -7,7 +7,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.xwalk.core">
+    package="org.sil.xwalk.core">
 
     <application
         android:label="XWalkCoreLibrary" android:hardwareAccelerated="true" android:icon="@drawable/crosswalk">
