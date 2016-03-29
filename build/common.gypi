@@ -161,7 +161,7 @@
     'disable_angle%': 0,
     'disable_quic_support%': 0,
     'disable_sync_compositor%': 0,
-    'disable_webi_audio%': 0,
+    'disable_web_audio%': 0,
     'disable_webaudio_hrtf%': 0,
     'use_minimum_resources%': 0,
     'disable_builtin_extensions%': 0,
