@@ -352,6 +352,7 @@ def main():
     # Enable use_minimum_resources by default
     args.append('-Duse_minimum_resources=1')
     # Disable buildin extension by default.
+    # This is required to get the build to work
     #args.append('-Ddisable_builtin_extensions=1')
     # Disable Devtools by default
     args.append('-Ddisable_devtools=1')
