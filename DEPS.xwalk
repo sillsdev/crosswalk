@@ -17,7 +17,8 @@
 # Edit these when rolling DEPS.xwalk.
 # -----------------------------------
 
-chromium_crosswalk_rev = 'a435f78c393d8b2e731e9a17da5ed53658dca759'
+#chromium_crosswalk_rev = 'a435f78c393d8b2e731e9a17da5ed53658dca759'
+chromium_crosswalk_rev = 'sil'
 v8_crosswalk_rev = 'fb6cbd5d3f9830261d425bdf7af94c9bc803332b'
 
 sil_crosswalk_git = 'https://github.com/sillsdev'
@@ -47,6 +48,8 @@ solutions = [
       'src/third_party/libpxc':
         crosswalk_git + '/libpxc.git@568e4ecc969b4663e82034e71d08efdd5fa77e1a',
 
+      'src/tools/gyp' :
+        'https://chromium.googlesource.com/external/gyp.git@master',
       # These directories are not relevant to Crosswalk and can be safely ignored
       # in a checkout. It avoids creating additional directories outside src/ that
       # are not used and also saves some bandwidth.
