@@ -21,7 +21,7 @@
 chromium_crosswalk_rev = 'sil'
 v8_crosswalk_rev = 'fb6cbd5d3f9830261d425bdf7af94c9bc803332b'
 
-sil_crosswalk_git = 'https://github.com/sillsdev'
+sil_crosswalk_git = 'git@github.com:sillsdev'
 crosswalk_git = 'https://github.com/crosswalk-project'
 
 # ------------------------------------------------------

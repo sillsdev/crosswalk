@@ -156,6 +156,8 @@
 
     # Flags defined for CrosswalkLite
     'use_icu_alternatives_on_android%': 0,
+    'v8_host_byteorder%': '<!(python -c "import sys; print sys.byteorder")',
+    'v8_enable_i18n_support' : 0,
     'disable_xslt%': 0,
     'disable_webp%': 0,
     'disable_angle%': 0,
