@@ -18,10 +18,10 @@
 # -----------------------------------
 
 #chromium_crosswalk_rev = 'a435f78c393d8b2e731e9a17da5ed53658dca759'
-chromium_crosswalk_rev = 'sil'
+chromium_crosswalk_rev = 'origin/sil'
 v8_crosswalk_rev = 'fb6cbd5d3f9830261d425bdf7af94c9bc803332b'
 
-sil_crosswalk_git = 'git@github.com:sillsdev'
+sil_git = 'git@github.com:sillsdev'
 crosswalk_git = 'https://github.com/crosswalk-project'
 
 # ------------------------------------------------------
@@ -31,13 +31,15 @@ crosswalk_git = 'https://github.com/crosswalk-project'
 
 solutions = [
   { 'name': 'src',
-    'url': sil_crosswalk_git + '/chromium-crosswalk.git@' + chromium_crosswalk_rev,
+    'url': sil_git + '/chromium-crosswalk.git@' + chromium_crosswalk_rev,
     'deps_file': '.DEPS.git',
     'custom_deps': {
       'src':
-        sil_crosswalk_git + '/chromium-crosswalk.git@' + chromium_crosswalk_rev,
+        sil_git + '/chromium-crosswalk.git@' + chromium_crosswalk_rev,
       'src/v8':
         crosswalk_git + '/v8-crosswalk.git@' + v8_crosswalk_rev,
+      'src/third_party/icu':
+        sil_git + '/icu4c.git@origin/xwalk-19',
 
       # Include OpenCL header files for WebCL support, target version 1.2.
       'src/third_party/khronos/CL':
