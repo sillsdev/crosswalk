@@ -24,7 +24,7 @@
       'outputs': [
         '<(stripped_library).lzma',
       ],
-      'action': ['lzma', '-7', '-f', '<(stripped_library)'],
+      'action': ['echo', 'lzma', '-7', '-f', '<(stripped_library)'],
     },
     {
       'action_name': 'copy_compressed_library',
@@ -35,7 +35,7 @@
       'outputs': [
         '<(compressed_library)',
       ],
-      'action': ['cp', '<(stripped_library).lzma', '<(compressed_library)'],
+      'action': ['echo', 'cp', '<(stripped_library).lzma', '<(compressed_library)'],
     },
   ],
   'includes': [ '../build/java_apk.gypi' ],
