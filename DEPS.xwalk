@@ -1,3 +1,4 @@
+# xwalk_base = 'git@github.com:sillsdev'
 # Source code dependencies required for building Crosswalk.
 #
 # This file is used as a template to generate .gclient-xwalk, which is a
@@ -21,7 +22,8 @@
 chromium_crosswalk_rev = 'origin/sil'
 v8_crosswalk_rev = 'fb6cbd5d3f9830261d425bdf7af94c9bc803332b'
 
-sil_git = 'git@github.com:sillsdev'
+#sil_git = 'git@github.com:sillsdev'
+sil_git = xwalk_base
 crosswalk_git = 'https://github.com/crosswalk-project'
 
 # ------------------------------------------------------

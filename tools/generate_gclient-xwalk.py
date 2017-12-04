@@ -13,7 +13,7 @@ User-configurable values such as |cache_dir| are fetched from .gclient instead.
 
 import logging
 import optparse
-import os
+import os, re
 import pprint
 
 
@@ -48,6 +48,12 @@ def GenerateGClientXWalk(options):
   else:
     cache_dir = gclient_config.get('cache_dir')
   deps_contents += 'cache_dir = %s\n' % pprint.pformat(cache_dir)
+
+  if gclient_config.get('use_xwalk_url', 0):
+    for s in gclient_config.get('solutions'):
+        if s['name'] == 'src/xwalk':
+            url = re.sub(ur'/[^/]*$', '', s['url'])
+            deps_contents = 'xwalk_base = "' + url + '"\n' + deps_contents
 
   with open(os.path.join(GCLIENT_ROOT, '.gclient-xwalk'), 'w') as gclient_file:
     gclient_file.write(deps_contents)
