@@ -58,7 +58,7 @@
       'use_sysroot%': '<(use_sysroot)',
 
       # Whether to disable NaCl support.
-      'disable_nacl%': 0,
+      'disable_nacl%': 1,
 
       # Whether to enable WebCL support in Blink.
       'enable_webcl%': 0,
